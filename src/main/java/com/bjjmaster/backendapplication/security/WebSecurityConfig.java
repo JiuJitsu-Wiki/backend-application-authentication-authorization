@@ -24,7 +24,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // allow swaggger-ui
                 .antMatchers("/swagger-ui/**").permitAll()//
                 .antMatchers("/v3/api-docs/**").permitAll()//
-                .antMatchers("/api-docs.yaml").permitAll()//
                 // allow h2 console
                 .antMatchers("/h2-console/**/**").permitAll()
                 .antMatchers("/public/**").permitAll()//
