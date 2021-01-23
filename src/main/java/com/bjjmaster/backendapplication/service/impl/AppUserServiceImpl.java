@@ -1,6 +1,6 @@
 package com.bjjmaster.backendapplication.service.impl;
 
-import com.bjjmaster.backendapplication.DTO.RegisterUserDTO;
+import com.bjjmaster.backendapplication.DTO.UserDTO;
 import com.bjjmaster.backendapplication.model.AppUser;
 import com.bjjmaster.backendapplication.repository.AppUserRepository;
 import com.bjjmaster.backendapplication.service.AppUserService;
@@ -26,9 +26,9 @@ public class AppUserServiceImpl implements AppUserService {
     }
 
     @Override
-    public AppUser registerAppUser(RegisterUserDTO registerUserDTO) {
-        registerUserDTO.setPassword(passwordEncoder.encode(registerUserDTO.getPassword()));
-        AppUser appUser = modelMapper.map(registerUserDTO, AppUser.class);
+    public AppUser registerAppUser(UserDTO userDTO) {
+        userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        AppUser appUser = modelMapper.map(userDTO, AppUser.class);
         appUserRepository.save(appUser);
         return appUser;
     }

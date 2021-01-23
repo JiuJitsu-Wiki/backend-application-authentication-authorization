@@ -1,6 +1,6 @@
 package com.bjjmaster.backendapplication.controller;
 
-import com.bjjmaster.backendapplication.DTO.RegisterUserDTO;
+import com.bjjmaster.backendapplication.DTO.UserDTO;
 import com.bjjmaster.backendapplication.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +21,8 @@ public class UserController {
     }
 
     @PostMapping(value = "/register")
-    public ResponseEntity<String> register(@RequestBody RegisterUserDTO registerUserDTO) {
-        appUserService.registerAppUser(registerUserDTO);
+    public ResponseEntity<String> register(@RequestBody UserDTO userDTO) {
+        appUserService.registerAppUser(userDTO);
         return ResponseEntity.ok("giname");
     }
 }
