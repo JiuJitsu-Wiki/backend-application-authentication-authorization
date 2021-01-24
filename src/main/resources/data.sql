@@ -1,5 +1,5 @@
--- INSERT INTO app_user (id, email, password, username)
--- VALUES
---     (1, 'richie@bjjmaster.com', '1234', 'monster'),
---     (2, 'fabian@bjjmaster.com', '1234', 'purplegeek'),
---     (3, 'fran@bjjmaster.com', '1234', 'professor');
+INSERT INTO app_user (id, email, password, username)
+VALUES
+    (1, 'richie@bjjmaster.com', '1234', 'monster'),
+    (2, 'fabian@bjjmaster.com', '1234', 'purplegeek'),
+    (3, 'fran@bjjmaster.com', '1234', 'professor');

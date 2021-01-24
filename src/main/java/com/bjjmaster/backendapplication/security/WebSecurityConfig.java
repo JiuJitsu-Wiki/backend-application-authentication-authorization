@@ -28,7 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // No session will be created or used by spring security
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-        // TODO: remove in higher environment
+        // This is for h2-console and should be removed in higher environment
         http.headers().frameOptions().sameOrigin();
 
         // Entry points
