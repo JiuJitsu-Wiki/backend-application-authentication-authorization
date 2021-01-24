@@ -4,10 +4,7 @@ import com.bjjmaster.backendapplication.DTO.UserDTO;
 import com.bjjmaster.backendapplication.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -20,9 +17,23 @@ public class UserController {
         this.appUserService = appUserService;
     }
 
+    // TODO: handle user/username already exists
+    // TODO: email/password/username valitation
     @PostMapping(value = "/register")
     public ResponseEntity<String> register(@RequestBody UserDTO userDTO) {
         appUserService.registerAppUser(userDTO);
-        return ResponseEntity.ok("giname");
+        return ResponseEntity.ok("User registered successfully");
     }
+
+    @PostMapping(value = "/login")
+    public ResponseEntity<String> login(@RequestParam String email,
+                                           @RequestParam String password) {
+//        appUserService.registerAppUser(userDTO);
+        return ResponseEntity.ok("User registered successfully");
+    }
+
+
+
+
+
 }
