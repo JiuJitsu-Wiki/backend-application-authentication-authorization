@@ -5,6 +5,4 @@ import com.bjjmaster.backendapplication.model.AppUser;
 
 public interface AppUserService {
     AppUser registerAppUser(UserDTO userDTO);
-
-    UserDTO login(String email, String password);
 }
