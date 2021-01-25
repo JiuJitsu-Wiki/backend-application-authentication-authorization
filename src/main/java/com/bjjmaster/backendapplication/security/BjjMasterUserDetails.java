@@ -25,7 +25,7 @@ public class BjjMasterUserDetails implements UserDetailsService {
         return org.springframework.security.core.userdetails.User//
                 .withUsername(appUser.getEmail())//
                 .password(appUser.getPassword())//
-//                .authorities(appUser.getRoles())//
+                .authorities(appUser.getRoles())//
                 .accountExpired(false)//
                 .accountLocked(false)//
                 .credentialsExpired(false)//

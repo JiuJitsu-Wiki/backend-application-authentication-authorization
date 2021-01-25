@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Set;
 
 @Service
 public class AppUserServiceImpl implements AppUserService {
@@ -44,7 +43,7 @@ public class AppUserServiceImpl implements AppUserService {
     public AppUser registerAppUser(UserDTO userDTO) {
         userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         AppUser appUser = modelMapper.map(userDTO, AppUser.class);
-        appUser.setRoles(Set.of(Role.ROLE_ADMIN));
+        appUser.setRoles(new ArrayList<>(Collections.singletonList(Role.ROLE_ADMIN)));
         appUserRepository.save(appUser);
         return appUser;
     }
@@ -53,9 +52,9 @@ public class AppUserServiceImpl implements AppUserService {
     public UserDTO login(String email, String password) {
         AppUser appUser = appUserRepository.findByEmail(email);
         try {
-            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(email, password);
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(email, password, appUser.getRoles());
             authenticationManager.authenticate(authenticationToken);
-            String jwtToken = jwtTokenProvider.createToken(email, new ArrayList<>(Collections.singletonList(Role.ROLE_ADMIN)));
+            String jwtToken = jwtTokenProvider.createToken(email, appUser.getRoles());
             UserDTO userDTO = new UserDTO();
             userDTO.setEmail(email);
             userDTO.setJwt(jwtToken);

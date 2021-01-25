@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 public class AppUser {
@@ -32,5 +32,5 @@ public class AppUser {
     @Setter
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
-    Set<Role> roles;
+    List<Role> roles;
 }
