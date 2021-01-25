@@ -9,8 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -38,26 +36,19 @@ class UserControllerTest {
                 .andExpect(status().isOk());
     }
 
-//    @Test
-//    void login() throws Exception {
-//        UserDTO userDTO = new UserDTO();
-//        userDTO.setEmail("fran@bjjmaster.com");
-//        userDTO.setPassword("1234");
-//        userDTO.setUsername("professor");
-//        this.mockMvc.perform(
-//                post("/users/register")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(objectMapper.writeValueAsString(userDTO)))
-//                .andExpect(status().isOk());
-//
-//        UserDTO userDTO2 = new UserDTO();
-//        userDTO.setEmail("fran@bjjmaster.com");
-//        userDTO.setPassword("1234");
-//        userDTO.setUsername("professor");
-//        this.mockMvc.perform(
-//                post("/users/login")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(objectMapper.writeValueAsString(userDTO)))
-//                .andExpect(status().isOk());
-//    }
+    @Test
+    void login() throws Exception {
+        UserDTO userDTO = new UserDTO();
+        userDTO.setEmail("mikros@bjjmaster.com");
+        userDTO.setPassword("1234");
+        userDTO.setUsername("purpleheroM");
+        this.mockMvc.perform(
+                post("/users/register")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(userDTO)))
+                .andExpect(status().isOk());
+        this.mockMvc.perform(
+                post("/users/login?email=mikros@bjjmaster.com&password=1234"))
+                .andExpect(status().isOk());
+    }
 }

@@ -27,13 +27,10 @@ public class UserController {
 
     @PostMapping(value = "/login")
     public ResponseEntity<String> login(@RequestParam String email,
-                                           @RequestParam String password) {
-//        appUserService.registerAppUser(userDTO);
+                                        @RequestParam String password) {
+        appUserService.login(email, password);
         return ResponseEntity.ok("User registered successfully");
     }
-
-
-
 
 
 }

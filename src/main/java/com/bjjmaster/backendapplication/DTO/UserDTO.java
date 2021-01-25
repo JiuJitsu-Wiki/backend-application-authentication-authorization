@@ -9,9 +9,11 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
+//TODO: create more userDTOs
 public class UserDTO implements Serializable {
     private Long id;
     private String email;
     private String password;
     private String username;
+    private String jwt;
 }

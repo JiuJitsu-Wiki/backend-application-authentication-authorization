@@ -25,4 +25,6 @@ class WebSecurityConfigTest {
         // swagger ui is aloud
         this.mockMvc.perform(get("/v3/api-docs")).andExpect(status().is2xxSuccessful());
     }
+
+
 }

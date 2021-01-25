@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class AppUser {
@@ -26,4 +27,10 @@ public class AppUser {
     @Setter
     @Column(unique = true)
     private String username;
+
+    @Getter
+    @Setter
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
+    Set<Role> roles;
 }
